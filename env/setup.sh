@@ -1,9 +1,11 @@
 #!/bin/sh
 #
 
+
+sudo apt-get install git  && \
 sudo apt-get update       && \
 sudo apt-get dist-upgrade && \
-sudo apt-get install git  && \
+sudo apt-get autoremove   && \
 sudo reboot
 
 exit
