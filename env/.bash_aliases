@@ -1,3 +1,3 @@
-alias dir='ls -alALF'
-alias upgrade='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove'
-alias reboot='sudo reboot'
+alias dir="ls -alALF"
+alias update="sudo apt update && sudo apt dist-upgrade && sudo apt autoclean && sudo apt autoremove"
+alias reboot="sudo reboot"
