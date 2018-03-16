@@ -40,6 +40,10 @@ git checkout v8.x && ./configure --prefix=$HOME/container && make -j 2 release-o
 
 make install
 
+rsync -arv deps/npm/man $HOME/container/share/
+
+npm install -g node-gyp
+
 }
 
 # sys_init
