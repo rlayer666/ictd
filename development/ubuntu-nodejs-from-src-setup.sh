@@ -13,6 +13,7 @@ export PATH=$HOME/container/bin:$HOME/bin:$PATH
 alias dir="ls -alALF"
 alias update="sudo apt update && sudo apt dist-upgrade && sudo apt autoclean && sudo apt autoremove"
 alias reboot="sudo reboot"
+alias node-gyp="node-gyp --nodedir $HOME/src/node"
 QUERY
 
 }
@@ -36,7 +37,13 @@ function node_init
 
 mkdir -p $HOME/src $HOME/container && cd $HOME/src && git clone https://github.com/nodejs/node && cd node
 
-git checkout v8.x && ./configure --prefix=$HOME/container && make -j 2 release-only all
+git checkout v8.x
+
+perl -pi -e 's/define NODE_VERSION_IS_RELEASE 0/define NODE_VERSION_IS_RELEASE 1/' src/node_version.h
+
+git commit -am "release"
+
+./configure --prefix=$HOME/container && make -j 2 release-only all
 
 make install
 
@@ -49,7 +56,7 @@ npm install -g node-gyp
 # sys_init
 # sys_update
 # dev_prereq
-# node_init
+node_init
 
 exit
 
